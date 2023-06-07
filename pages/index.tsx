@@ -17,9 +17,9 @@ export default function Home() {
       inputRefs.current[index + 1].focus();
     }
   };
-  useEffect(()=>{
+  useEffect(() => {
     inputRefs.current[0].focus();
-  },[])
+  }, [])
   const handleKeyDown = (index: number, event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Backspace' && otpValues[index] === '' && index > 0) {
       // Delete value and move focus to the previous input
@@ -32,7 +32,7 @@ export default function Home() {
 
 
   return (
-    <div className='w-full h-screen bg-blue-400 flex justify-center items-center'>
+    <div className={`${inter.className} w-full h-screen bg-blue-400 flex justify-center items-center`}>
       <div className='p-12 bg-white rounded-lg flex items-center justify-center flex-col '>
         <div className='bg-blue-400 w-[80px] h-[80px] rounded-full flex items-center justify-center '>
           <BsShieldCheck size={48} />
@@ -45,7 +45,7 @@ export default function Home() {
               <input
                 className='border w-[80px] h-[80px] rounded-md text-xl text-center appearance-none'
                 key={index}
-                ref={(ref) => (inputRefs.current[index] = ref)}
+                ref={(ref: HTMLInputElement) => (inputRefs.current[index] = ref)}
                 type="text"
                 value={value}
                 maxLength={1}
